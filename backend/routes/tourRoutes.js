@@ -56,7 +56,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
 });
 
 // SEED sample tours
-router.post("/seed", async (req, res) => {
+router.get("/seed", async (req, res) => {
   try {
     await Tour.deleteMany();
     const tours = [
