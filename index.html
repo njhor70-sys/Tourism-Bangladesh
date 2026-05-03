@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Tourism Bangladesh | Login</title>
+</head>
+<body class="min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image:url('Images/bandarban.png')">
+  <div class="absolute inset-0 bg-black/55"></div>
+
+  <div class="relative z-10 w-[92%] max-w-md backdrop-blur-xl bg-white/20 border border-white/30 rounded-3xl shadow-2xl">
+
+    <!-- Header -->
+    <div class="h-28 bg-gradient-to-r from-green-700 to-green-500 flex items-center justify-center rounded-t-3xl">
+      <h1 class="text-2xl font-extrabold text-white text-center">🌿 Tourism Bangladesh</h1>
+    </div>
+
+    <!-- ══ LOGIN ══ -->
+    <div id="loginSection" class="p-8">
+      <h2 class="text-white text-xl font-bold mb-5 text-center">Login to Your Account</h2>
+      <div class="mb-4">
+        <label class="text-white font-semibold text-sm">Mobile Number</label>
+        <input id="mobile-number" type="tel" maxlength="11" placeholder="01XXXXXXXXX"
+          class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        <p id="mobile-err" class="text-red-300 text-xs mt-1 hidden">❌ Invalid mobile. Format: 01XXXXXXXXX</p>
+      </div>
+      <div class="mb-6">
+        <label class="text-white font-semibold text-sm">4-Digit PIN</label>
+        <input id="pin-number" type="password" maxlength="4" placeholder="Enter 4-digit PIN"
+          class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        <p id="pin-err" class="text-red-300 text-xs mt-1 hidden">❌ PIN must be exactly 4 digits.</p>
+      </div>
+      <button id="loginBtn"
+        class="btn w-full rounded-2xl bg-green-600 hover:bg-green-700 text-white font-semibold text-base">
+        Login
+      </button>
+      <div class="flex justify-between mt-4 text-sm">
+        <a href="#" id="toRegister" class="text-green-300 hover:underline font-medium">Create Account</a>
+        <a href="#" id="toForgot" class="text-yellow-300 hover:underline font-medium">Forgot PIN?</a>
+      </div>
+    </div>
+
+    <!-- ══ REGISTER ══ -->
+    <div id="registerSection" class="p-8 hidden">
+      <h2 class="text-white text-xl font-bold mb-5 text-center">Create New Account</h2>
+      <div class="mb-3">
+        <label class="text-white font-semibold text-sm">Full Name</label>
+        <input id="reg-name" type="text" placeholder="Your full name"
+          class="input w-full bg-white/90 mt-2 rounded-2xl" />
+      </div>
+      <div class="mb-3">
+        <label class="text-white font-semibold text-sm">Mobile Number</label>
+        <input id="reg-mobile" type="tel" maxlength="11" placeholder="01XXXXXXXXX"
+          class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        <p id="reg-mobile-err" class="text-red-300 text-xs mt-1 hidden">❌ Invalid mobile. Format: 01XXXXXXXXX</p>
+      </div>
+      <div class="mb-3">
+        <label class="text-white font-semibold text-sm">
+          Email <span class="text-green-300 text-xs">(booking confirmation & PIN recovery)</span>
+        </label>
+        <input id="reg-email" type="email" placeholder="your@email.com"
+          class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        <p id="reg-email-err" class="text-red-300 text-xs mt-1 hidden">❌ Invalid email address.</p>
+      </div>
+      <div class="mb-5">
+        <label class="text-white font-semibold text-sm">Create 4-Digit PIN</label>
+        <input id="reg-pin" type="password" maxlength="4" placeholder="Create a 4-digit PIN"
+          class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        <p id="reg-pin-err" class="text-red-300 text-xs mt-1 hidden">❌ PIN must be exactly 4 digits.</p>
+      </div>
+      <button id="registerBtn"
+        class="btn w-full rounded-2xl bg-green-600 hover:bg-green-700 text-white font-semibold text-base">
+        Register
+      </button>
+      <p class="text-center text-gray-300 text-sm mt-4">
+        Already have account? <a href="#" id="toLogin" class="text-green-300 hover:underline font-medium">Login here</a>
+      </p>
+    </div>
+
+    <!-- ══ FORGOT PIN ══ -->
+    <div id="forgotSection" class="p-8 hidden">
+
+      <!-- Step 1 -->
+      <div id="forgotStep1">
+        <h2 class="text-white text-xl font-bold mb-5 text-center">🔐 Reset Your PIN</h2>
+        <div class="mb-4">
+          <label class="text-white font-semibold text-sm">Mobile Number</label>
+          <input id="forgot-mobile" type="tel" maxlength="11" placeholder="01XXXXXXXXX"
+            class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        </div>
+        <div class="mb-5">
+          <label class="text-white font-semibold text-sm">Registered Email</label>
+          <input id="forgot-email" type="email" placeholder="your@email.com"
+            class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        </div>
+        <button id="sendOTPBtn"
+          class="btn w-full rounded-2xl bg-yellow-500 hover:bg-yellow-600 text-white font-semibold">
+          Send OTP to Email
+        </button>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="forgotStep2" class="hidden">
+        <h2 class="text-white text-xl font-bold mb-2 text-center">📧 Enter OTP</h2>
+        <p class="text-green-300 text-sm text-center mb-4">Check your email — valid for 10 minutes</p>
+        <div class="mb-4">
+          <label class="text-white font-semibold text-sm">6-Digit OTP</label>
+          <input id="otp-input" type="text" maxlength="6" placeholder="______"
+            class="input w-full bg-white/90 mt-2 rounded-2xl text-center text-2xl tracking-widest" />
+        </div>
+        <div class="mb-5">
+          <label class="text-white font-semibold text-sm">New 4-Digit PIN</label>
+          <input id="new-pin" type="password" maxlength="4" placeholder="New PIN"
+            class="input w-full bg-white/90 mt-2 rounded-2xl" />
+        </div>
+        <button id="resetPINBtn"
+          class="btn w-full rounded-2xl bg-green-600 hover:bg-green-700 text-white font-semibold">
+          Reset PIN
+        </button>
+      </div>
+
+      <p class="text-center mt-4">
+        <a href="#" id="backToLogin" class="text-green-300 hover:underline text-sm">← Back to Login</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="toast.js"></script>
+  <script src="config.js"></script>
+  <script>
+    // Already logged in → skip login page
+    if (localStorage.getItem("token")) window.location.replace("Home.html");
+
+    // ── Helpers ──
+    const $ = id => document.getElementById(id);
+    function isValidMobile(m) { return /^01[3-9]\d{8}$/.test(m); }
+    function isValidPin(p)    { return /^\d{4}$/.test(p); }
+    function isValidEmail(e)  { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+    function showSection(name) {
+      ["loginSection","registerSection","forgotSection"].forEach(s => $(s).classList.add("hidden"));
+      $(name).classList.remove("hidden");
+    }
+
+    $("toRegister").onclick  = e => { e.preventDefault(); showSection("registerSection"); };
+    $("toLogin").onclick     = e => { e.preventDefault(); showSection("loginSection"); };
+    $("toForgot").onclick    = e => { e.preventDefault(); showSection("forgotSection"); };
+    $("backToLogin").onclick = e => { e.preventDefault(); showSection("loginSection"); };
+
+    // ── Live validation ──
+    $("mobile-number").oninput = function() {
+      $("mobile-err").classList.toggle("hidden", !this.value || isValidMobile(this.value));
+    };
+    $("pin-number").oninput = function() {
+      $("pin-err").classList.toggle("hidden", !this.value || /^\d{1,4}$/.test(this.value));
+    };
+    $("reg-mobile").oninput = function() {
+      $("reg-mobile-err").classList.toggle("hidden", !this.value || isValidMobile(this.value));
+    };
+    $("reg-email").oninput = function() {
+      $("reg-email-err").classList.toggle("hidden", !this.value || isValidEmail(this.value));
+    };
+    $("reg-pin").oninput = function() {
+      $("reg-pin-err").classList.toggle("hidden", !this.value || /^\d{1,4}$/.test(this.value));
+    };
+
+    // ── LOGIN ──
+    $("loginBtn").addEventListener("click", async () => {
+      const mobile = $("mobile-number").value.trim();
+      const pin    = $("pin-number").value.trim();
+      if (!isValidMobile(mobile)) { showToast("Invalid mobile number! Use 01XXXXXXXXX", "error"); return; }
+      if (!isValidPin(pin))       { showToast("PIN must be exactly 4 digits!", "error"); return; }
+
+      $("loginBtn").disabled = true;
+      $("loginBtn").textContent = "Logging in...";
+      try {
+        const res  = await fetch(`${API}/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mobile, pin })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          showToast("Login successful! Redirecting... 🎉", "success");
+          setTimeout(() => window.location.replace("Home.html"), 1200);
+        } else {
+          showToast(data.message, "error");
+        }
+      } catch {
+        showToast("Cannot connect to server. Try again.", "error");
+      } finally {
+        $("loginBtn").disabled = false;
+        $("loginBtn").textContent = "Login";
+      }
+    });
+
+    // ── REGISTER ──
+    $("registerBtn").addEventListener("click", async () => {
+      const name   = $("reg-name").value.trim();
+      const mobile = $("reg-mobile").value.trim();
+      const email  = $("reg-email").value.trim();
+      const pin    = $("reg-pin").value.trim();
+      if (name.length < 2)              { showToast("Name must be at least 2 characters.", "error"); return; }
+      if (!isValidMobile(mobile))       { showToast("Invalid mobile! Use 01XXXXXXXXX", "error"); return; }
+      if (email && !isValidEmail(email)){ showToast("Invalid email address!", "error"); return; }
+      if (!isValidPin(pin))             { showToast("PIN must be exactly 4 digits!", "error"); return; }
+
+      $("registerBtn").disabled = true;
+      $("registerBtn").textContent = "Registering...";
+      try {
+        const res  = await fetch(`${API}/auth/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, mobile, email, pin })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          showToast("Registration successful! Please login. 🎉", "success");
+          setTimeout(() => showSection("loginSection"), 1500);
+        } else {
+          showToast(data.message, "error");
+        }
+      } catch {
+        showToast("Cannot connect to server.", "error");
+      } finally {
+        $("registerBtn").disabled = false;
+        $("registerBtn").textContent = "Register";
+      }
+    });
+
+    // ── FORGOT — Send OTP ──
+    $("sendOTPBtn").addEventListener("click", async () => {
+      const mobile = $("forgot-mobile").value.trim();
+      const email  = $("forgot-email").value.trim();
+      if (!isValidMobile(mobile)) { showToast("Invalid mobile number!", "error"); return; }
+      if (!isValidEmail(email))   { showToast("Invalid email address!", "error"); return; }
+
+      $("sendOTPBtn").disabled = true;
+      $("sendOTPBtn").textContent = "Sending...";
+      try {
+        const res  = await fetch(`${API}/auth/forgot-password`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mobile, email })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          showToast("OTP sent! Check your email 📧", "success");
+          $("forgotStep1").classList.add("hidden");
+          $("forgotStep2").classList.remove("hidden");
+        } else {
+          showToast(data.message, "error");
+        }
+      } catch {
+        showToast("Cannot connect to server.", "error");
+      } finally {
+        $("sendOTPBtn").disabled = false;
+        $("sendOTPBtn").textContent = "Send OTP to Email";
+      }
+    });
+
+    // ── FORGOT — Reset PIN ──
+    $("resetPINBtn").addEventListener("click", async () => {
+      const mobile = $("forgot-mobile").value.trim();
+      const otp    = $("otp-input").value.trim();
+      const newPin = $("new-pin").value.trim();
+      if (otp.length !== 6)    { showToast("Enter the 6-digit OTP.", "error"); return; }
+      if (!isValidPin(newPin)) { showToast("New PIN must be exactly 4 digits!", "error"); return; }
+
+      $("resetPINBtn").disabled = true;
+      $("resetPINBtn").textContent = "Resetting...";
+      try {
+        const res  = await fetch(`${API}/auth/reset-pin`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mobile, otp, newPin })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          showToast("PIN reset successful! Please login ✅", "success");
+          setTimeout(() => {
+            $("forgotStep2").classList.add("hidden");
+            $("forgotStep1").classList.remove("hidden");
+            showSection("loginSection");
+          }, 1500);
+        } else {
+          showToast(data.message, "error");
+        }
+      } catch {
+        showToast("Cannot connect to server.", "error");
+      } finally {
+        $("resetPINBtn").disabled = false;
+        $("resetPINBtn").textContent = "Reset PIN";
+      }
+    });
+  </script>
+</body>
+</html>

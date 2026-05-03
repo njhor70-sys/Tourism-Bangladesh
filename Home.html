@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Home</title>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <img src="Assets/TourismBangladesh.png" alt="Tourism Bangladesh" class="h-10 w-auto object-contain">
+      <span class="text-xl font-bold text-green-600">Tourism Bangladesh</span>
+    </div>
+    <ul class="hidden md:flex space-x-8 font-medium text-gray-700 items-center">
+      <li><a href="Home.html" class="hover:text-green-600 transition">Home</a></li>
+      <li><a href="AboutUs.html" class="hover:text-green-600 transition">About Us</a></li>
+      <li><a href="Tourism.html" class="hover:text-green-600 transition">Tourism</a></li>
+      <li><a href="Faq.html" class="hover:text-green-600 transition">FAQ</a></li>
+      <li><a href="Blog.html" class="hover:text-green-600 transition">Blog</a></li>
+      <li><span id="user-greeting" class="text-green-600 font-semibold text-sm"></span></li>
+      <li>
+        <button onclick="logout()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+          Log Out
+        </button>
+      </li>
+    </ul>
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+    <ul class="space-y-4 font-medium text-gray-700">
+      <li><a href="Home.html" class="block hover:text-green-600">Home</a></li>
+      <li><a href="AboutUs.html" class="block hover:text-green-600">About Us</a></li>
+      <li><a href="Tourism.html" class="block hover:text-green-600">Tourism</a></li>
+      <li><a href="Faq.html" class="block hover:text-green-600">FAQ</a></li>
+      <li><a href="Blog.html" class="block hover:text-green-600">Blog</a></li>
+      <li><button onclick="logout()" class="block text-center bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 w-full">Log Out</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header id="hero" class="relative min-h-[85vh] md:min-h-screen flex items-center justify-center text-center bg-cover bg-center transition-all duration-1000">
+  <div class="absolute inset-0 bg-black/55"></div>
+  <div class="relative z-10 max-w-3xl px-4 sm:px-6">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3">
+      Welcome to <span class="text-green-400">Tourism Bangladesh</span>
+    </h1>
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4">
+      Explore the Hidden Beauty of Bangladesh
+    </h2>
+    <p class="text-base sm:text-lg text-gray-200 mb-6 leading-relaxed">
+      From Bandarban's hills to Saint Martin's blue waters, explore breathtaking destinations and unforgettable journeys.
+    </p>
+    <a href="Tourism.html" class="inline-block px-6 py-3 text-base sm:text-lg bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+      Explore Tours
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- Hot Deals -->
+  <section class="py-12 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Discover Bangladesh With Our Hot Deals</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="Images/bandarban.png" alt="Bandarban" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Bandarban</h3>
+            <p class="text-gray-600 mb-4">Experience the serene hills and vibrant culture of Bandarban.</p>
+            <a href="Tourism.html" class="text-green-600 hover:underline">Learn More →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="Images/sajek.png" alt="Sajek" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Sajek</h3>
+            <p class="text-gray-600 mb-4">Enjoy the breathtaking views and tranquil environment of Sajek.</p>
+            <a href="Tourism.html" class="text-green-600 hover:underline">Learn More →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="Images/rangamati.png" alt="Rangamati" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Rangamati</h3>
+            <p class="text-gray-600 mb-4">Discover the scenic beauty and cultural heritage of Rangamati.</p>
+            <a href="Tourism.html" class="text-green-600 hover:underline">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Why Choose Us?</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="mb-4"><img src="Assets/TourGuide.png" alt="Experienced Guides" class="rounded-lg h-40 mx-auto"></div>
+          <h3 class="text-xl font-semibold mb-2">Experienced Guides</h3>
+          <p class="text-gray-600">Our knowledgeable guides ensure you have an unforgettable experience.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="mb-4"><img src="Assets/CustomizeTours.png" alt="Customized Tours" class="rounded-lg h-40 mx-auto"></div>
+          <h3 class="text-xl font-semibold mb-2">Customized Tours</h3>
+          <p class="text-gray-600">Tailor your trip to your preferences with our flexible tour options.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+          <div class="mb-4"><img src="Assets/Support.png" alt="24/7 Support" class="rounded-lg h-40 mx-auto"></div>
+          <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+          <p class="text-gray-600">Our dedicated support team is here to assist you at every step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Gallery</h2>
+      <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <img src="Images/kuakata.png" alt="Kuakata" class="w-full h-48 object-cover rounded-lg">
+        <img src="Images/saintmartin.png" alt="Saint Martin" class="w-full h-48 object-cover rounded-lg">
+        <img src="Images/sundarban.png" alt="Sundarban" class="w-full h-48 object-cover rounded-lg">
+        <img src="Images/coxbazar.jpg" alt="Cox's Bazar" class="w-full h-48 object-cover rounded-lg">
+        <img src="Images/sajek.png" alt="Sajek" class="w-full h-48 object-cover rounded-lg">
+        <img src="Images/rangamati.png" alt="Rangamati" class="w-full h-48 object-cover rounded-lg">
+        <img src="Images/bandarban.png" alt="Bandarban" class="w-full h-48 object-cover rounded-lg">
+        <img src="Images/sylhet.png" alt="Sylhet" class="w-full h-48 object-cover rounded-lg">
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="py-12 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold text-center text-gray-800">Customers Reviews</h2>
+      <p class="text-center text-gray-600 mb-8">Discover what our clients think about our service</p>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <p class="text-gray-600 mb-4">"An unforgettable experience! The tour was well-organized and the guide was fantastic."</p>
+          <div class="flex items-center gap-4">
+            <img src="Assets/Customer1.png" alt="Customer 1" class="w-12 h-12 rounded-full object-cover">
+            <div><h3 class="text-sm font-semibold">Tanvir Shahriar</h3><p class="text-xs text-gray-500">Traveler</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <p class="text-gray-600 mb-4">"Highly recommend! The tour was customized to our preferences and the support team was amazing."</p>
+          <div class="flex items-center gap-4">
+            <img src="Assets/Customer2.png" alt="Customer 2" class="w-12 h-12 rounded-full object-cover">
+            <div><h3 class="text-sm font-semibold">Siddiqur Rahman</h3><p class="text-xs text-gray-500">Adventurer</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <p class="text-gray-600 mb-4">"The best travel experience I've ever had! The guides were knowledgeable and the itinerary was perfect."</p>
+          <div class="flex items-center gap-4">
+            <img src="Assets/Customer3.png" alt="Customer 3" class="w-12 h-12 rounded-full object-cover">
+            <div><h3 class="text-sm font-semibold">Azizur Rahman</h3><p class="text-xs text-gray-500">Explorer</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Contact Us</h2>
+      <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <form>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-semibold mb-2">Name</label>
+            <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-green-600">
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-semibold mb-2">Email</label>
+            <input type="email" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-green-600">
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-semibold mb-2">Message</label>
+            <textarea rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-green-600"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <h1 class="text-xl font-semibold text-white mb-4">Explore</h1>
+        <p class="text-gray-400 leading-relaxed">Discover breathtaking destinations and unforgettable experiences with our curated travel guides across Bangladesh.</p>
+      </div>
+      <div>
+        <h1 class="text-xl font-semibold text-white mb-4">Contact</h1>
+        <p class="text-gray-400 mb-2">Get in touch with us anytime.</p>
+        <p class="text-gray-400">📧 support@tourismbangladesh.com</p>
+        <p class="text-gray-400">📞 +880 1234-567890</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold text-white mb-4">Give Us Your Feedback</h2>
+        <form class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Email</label>
+            <input type="email" class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-green-600">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Feedback</label>
+            <textarea rows="3" class="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:ring-2 focus:ring-green-600"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Send Feedback</button>
+        </form>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-10 pt-6 text-center text-sm text-gray-500">
+      © 2026 Tourism Bangladesh. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="toast.js"></script>
+<script src="config.js"></script>
+<script src="auth-guard.js"></script>
+<script src="HomePage/header.js"></script>
+<script src="HomePage/navbar.js"></script>
+</body>
+</html>

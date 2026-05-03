@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>About Us - Tourism Bangladesh</title>
+</head>
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <img src="Assets/TourismBangladesh.png" alt="Tourism Bangladesh" class="h-10 w-auto object-contain">
+      <span class="text-xl font-bold text-green-600">Tourism Bangladesh</span>
+    </div>
+    <ul class="hidden md:flex space-x-8 font-medium text-gray-700 items-center">
+      <li><a href="Home.html" class="hover:text-green-600 transition">Home</a></li>
+      <li><a href="AboutUs.html" class="hover:text-green-600 transition">About Us</a></li>
+      <li><a href="Tourism.html" class="hover:text-green-600 transition">Tourism</a></li>
+      <li><a href="Faq.html" class="hover:text-green-600 transition">FAQ</a></li>
+      <li><a href="Blog.html" class="hover:text-green-600 transition">Blog</a></li>
+      <li><span id="user-greeting" class="text-green-600 font-semibold text-sm"></span></li>
+      <li>
+        <button onclick="logout()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Log Out</button>
+      </li>
+    </ul>
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+    <ul class="space-y-4 font-medium text-gray-700">
+      <li><a href="Home.html" class="block hover:text-green-600">Home</a></li>
+      <li><a href="AboutUs.html" class="block hover:text-green-600">About Us</a></li>
+      <li><a href="Tourism.html" class="block hover:text-green-600">Tourism</a></li>
+      <li><a href="Faq.html" class="block hover:text-green-600">FAQ</a></li>
+      <li><a href="Blog.html" class="block hover:text-green-600">Blog</a></li>
+      <li><button onclick="logout()" class="block text-center bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 w-full">Log Out</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Banner -->
+<div class="bg-gradient-to-r from-green-800 to-green-600 text-white text-center py-16 px-4">
+  <h1 class="text-4xl font-bold mb-2">About Us</h1>
+  <p class="text-green-100">Our story, mission, and the team behind Tourism Bangladesh</p>
+</div>
+
+<!-- About Section -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="grid md:grid-cols-2 gap-16 items-center">
+    <div>
+      <img src="Images/bandarban.png" alt="About Us"
+        class="rounded-2xl shadow-lg w-full h-80 object-cover"
+        onerror="this.src='https://via.placeholder.com/600x400?text=Tourism+Bangladesh'">
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Who We <span class="text-green-600">Are</span></h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        Tourism Bangladesh is a passionate travel company dedicated to showcasing the breathtaking beauty of Bangladesh to the world. Founded in 2020, we have helped thousands of travelers discover the hidden gems of our incredible country.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        From the misty hills of Bandarban to the world's longest beach at Cox's Bazar, from the serene Kaptai Lake in Rangamati to the mysterious Sundarbans mangrove forest — we cover every corner of Bangladesh.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Our mission is simple: to make travel in Bangladesh safe, affordable, and unforgettable for everyone.
+      </p>
+      <a href="Tourism.html" class="inline-block px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold">
+        Explore Our Tours →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div>
+      <div class="text-4xl font-bold text-green-400 mb-2">5000+</div>
+      <div class="text-gray-400">Happy Travelers</div>
+    </div>
+    <div>
+      <div class="text-4xl font-bold text-green-400 mb-2">50+</div>
+      <div class="text-gray-400">Tour Packages</div>
+    </div>
+    <div>
+      <div class="text-4xl font-bold text-green-400 mb-2">8</div>
+      <div class="text-gray-400">Destinations</div>
+    </div>
+    <div>
+      <div class="text-4xl font-bold text-green-400 mb-2">4+</div>
+      <div class="text-gray-400">Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Our <span class="text-green-600">Team</span></h2>
+  <p class="text-center text-gray-500 mb-12">Meet the passionate people behind Tourism Bangladesh</p>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="bg-white rounded-xl shadow-md p-8 text-center hover:shadow-xl transition">
+      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">👨‍💼</div>
+      <h3 class="text-xl font-bold mb-1">Fattaur Rahman</h3>
+      <p class="text-green-600 font-semibold text-sm mb-3">Founder & CEO</p>
+      <p class="text-gray-500 text-sm">A passionate traveler with 10+ years experience in Bangladesh tourism industry.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-md p-8 text-center hover:shadow-xl transition">
+      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">👩‍💻</div>
+      <h3 class="text-xl font-bold mb-1">Sumi Akter</h3>
+      <p class="text-green-600 font-semibold text-sm mb-3">Head of Operations</p>
+      <p class="text-gray-500 text-sm">Ensures every tour runs smoothly with her meticulous planning and attention to detail.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-md p-8 text-center hover:shadow-xl transition">
+      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">🧭</div>
+      <h3 class="text-xl font-bold mb-1">Rudra Majumder</h3>
+      <p class="text-green-600 font-semibold text-sm mb-3">Lead Tour Guide</p>
+      <p class="text-gray-500 text-sm">Expert local guide with deep knowledge of Bangladesh's history, culture, and nature.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
+    © 2026 Tourism Bangladesh. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  if (!token) window.location.href = "index.html";
+  const greetEl = document.getElementById("user-greeting");
+  if (greetEl && user.name) greetEl.textContent = "Hi, " + user.name + "!";
+  document.getElementById("menu-btn").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "index.html";
+  }
+</script>
+</body>
+</html>

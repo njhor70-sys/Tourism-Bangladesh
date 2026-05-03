@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>My Bookings - Tourism Bangladesh</title>
+</head>
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <img src="Assets/TourismBangladesh.png" alt="Tourism Bangladesh" class="h-10 w-auto object-contain">
+      <span class="text-xl font-bold text-green-600">Tourism Bangladesh</span>
+    </div>
+    <ul class="hidden md:flex space-x-8 font-medium text-gray-700 items-center">
+      <li><a href="Home.html" class="hover:text-green-600 transition">Home</a></li>
+      <li><a href="AboutUs.html" class="hover:text-green-600 transition">About Us</a></li>
+      <li><a href="Tourism.html" class="hover:text-green-600 transition">Tourism</a></li>
+      <li><a href="Faq.html" class="hover:text-green-600 transition">FAQ</a></li>
+      <li><a href="Blog.html" class="hover:text-green-600 transition">Blog</a></li>
+      <li><a href="MyBookings.html" class="text-green-600 font-bold transition">My Bookings</a></li>
+      <li><a href="Profile.html" class="hover:text-green-600 transition">Profile</a></li>
+      <li><span id="user-greeting" class="text-green-600 font-semibold text-sm"></span></li>
+      <li><button onclick="logout()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Log Out</button></li>
+    </ul>
+    <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+    <ul class="space-y-3 font-medium text-gray-700">
+      <li><a href="Home.html" class="block hover:text-green-600">Home</a></li>
+      <li><a href="Tourism.html" class="block hover:text-green-600">Tourism</a></li>
+      <li><a href="MyBookings.html" class="block text-green-600 font-bold">My Bookings</a></li>
+      <li><a href="Profile.html" class="block hover:text-green-600">Profile</a></li>
+      <li><button onclick="logout()" class="block text-center bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 w-full">Log Out</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="bg-gradient-to-r from-green-800 to-green-600 text-white text-center py-12 px-4">
+  <h1 class="text-4xl font-bold mb-2">My Bookings</h1>
+  <p class="text-green-100">All your tour bookings in one place</p>
+</div>
+
+<!-- Bookings -->
+<section class="max-w-5xl mx-auto px-4 py-12">
+  <div id="bookings-container">
+    <div class="text-center py-16 text-gray-400 text-lg">Loading bookings... ⏳</div>
+  </div>
+</section>
+
+<footer class="bg-gray-900 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
+    © 2026 Tourism Bangladesh. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  const API = "http://localhost:5000/api";
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  if (!token) window.location.href = "index.html";
+  const greetEl = document.getElementById("user-greeting");
+  if (greetEl && user.name) greetEl.textContent = "Hi, " + user.name + "!";
+  document.getElementById("menu-btn").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+
+  async function loadBookings() {
+    const container = document.getElementById("bookings-container");
+    try {
+      const res = await fetch(`${API}/bookings/my`, {
+        headers: { Authorization: token }
+      });
+      const bookings = await res.json();
+
+      if (!bookings.length) {
+        container.innerHTML = `
+          <div class="text-center py-16">
+            <div class="text-6xl mb-4">🎒</div>
+            <p class="text-gray-500 text-lg mb-6">You haven't booked any tours yet!</p>
+            <a href="Tourism.html" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition font-semibold">
+              Explore Tours
+            </a>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = bookings.map(b => `
+        <div class="bg-white rounded-xl shadow-md p-6 mb-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-800 mb-1">🗺️ ${b.tourName}</h3>
+            <p class="text-gray-500 text-sm mb-1">👤 Name: <span class="font-semibold text-gray-700">${b.name}</span></p>
+            <p class="text-gray-500 text-sm mb-1">📱 Phone: <span class="font-semibold text-gray-700">${b.phone}</span></p>
+            <p class="text-gray-500 text-sm mb-1">👥 Persons: <span class="font-semibold text-gray-700">${b.persons}</span></p>
+            <p class="text-gray-500 text-sm">📅 Booked: <span class="font-semibold text-gray-700">${new Date(b.createdAt).toLocaleDateString("en-BD")}</span></p>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-green-600 mb-2">৳${b.totalPrice.toLocaleString()}</div>
+            <span class="px-4 py-1 rounded-full text-sm font-bold ${b.status === 'confirmed' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+              ${b.status === 'confirmed' ? '✅ Confirmed' : '❌ Cancelled'}
+            </span>
+          </div>
+        </div>
+      `).join("");
+    } catch (err) {
+      container.innerHTML = `<div class="text-center py-16 text-red-500">⚠️ Cannot load bookings. Backend chalu ache?</div>`;
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "index.html";
+  }
+
+  loadBookings();
+</script>
+<script src="toast.js"></script>
+<script src="config.js"></script>
+<script src="auth-guard.js"></script>
+</body>
+</html>
